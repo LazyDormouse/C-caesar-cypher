@@ -54,7 +54,7 @@ void decrypt(char *string, int key)
              *in the alphabet
              */
             a = (int)(strchr(alphabet, string[i]) - alphabet);
-            //next for cycle is basically "a = a - key;", but
+            //next for loop is basically "a = a - key;", but
             //it checks alphabet array's bounds so it doesn't go
             //below 0 or over 25
             for(j = 0; j < key; j++)
