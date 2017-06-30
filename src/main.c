@@ -68,7 +68,7 @@ void decrypt(char *string, int key)
         else
           string[i] = ' ';
       }
-    puts("output :\n");
+    puts("output :");
     puts(string);
     return;
   }
