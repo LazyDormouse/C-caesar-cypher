@@ -12,7 +12,6 @@
 
 void decrypt(char *string, int key);
 
-
 int main(int argc, char *argv[])
   {
     int k, i;
