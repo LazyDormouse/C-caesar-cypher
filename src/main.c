@@ -60,7 +60,7 @@ void decrypt(char *string, int key)
               {
                 if(a < 0)
                   a = 25;
-                a = a - 1;
+                a--;
               }
             //a = (((int)(strchr(alphabet, string[i]) - alphabet)) - key) % 26;
             string[i] = alphabet[a];
