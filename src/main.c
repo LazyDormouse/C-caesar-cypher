@@ -84,7 +84,6 @@ void decrypt(char *string, int key)
         else
           string[i] = ' ';
       }
-    puts("output :");
     puts(string);
     return;
   }
@@ -115,7 +114,6 @@ void encrypt(char *string, int key)
         else
           string[i] = ' ';
       }
-    puts("output :");
     puts(string);
     return;
   }
