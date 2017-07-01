@@ -74,9 +74,9 @@ void decrypt(char *string, int key)
             //below 0 or over 25
             for(j = 0; j < key; j++)
               {
+                a--;
                 if(a < 0)
                   a = 25;
-                a--;
               }
             //a = (((int)(strchr(alphabet, string[i]) - alphabet)) - key) % 26;
             string[i] = alphabet[a];
@@ -105,9 +105,9 @@ void encrypt(char *string, int key)
             a = (int)(strchr(alphabet, string[i]) - alphabet);
             for(j = 0; j < key; j++)
               {
+                a++;
                 if(a > 25)
                   a = 0;
-                a++;
               }
             string[i] = alphabet[a];
           }
