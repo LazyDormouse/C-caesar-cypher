@@ -6,8 +6,8 @@ Both encrypting and decrypting are supported.
 Usage: 
 
     ccypher [options] string_to_decrypt key
-        options:
-            -e          Encrypts the given string instead of decrypting it
+      options:
+          -e          Encrypts the given string instead of decrypting it
 'key' is the number of letters that needs to be shifted
 
 
