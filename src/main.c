@@ -12,17 +12,25 @@
 
 void decrypt(char *string, int key);
 void encrypt(char *string, int key);
+void usage();
 
 int main(int argc, char *argv[])
   {
-    int k, i, eflag = 0;
+    int k, i, eflag;
     if (argc != 4)
-      printf("usage:\n %s string_to_decrypt key ", argv[0]);
+      usage();
     else
       {
         //checking if we're encrypting the message or not, assume not
         if(strcmp("-e", argv[1]) == 0)
           eflag = 1;
+        else if(strcmp("-d", argv[1]) == 0)
+          eflag = 0;
+        else
+          {
+            puts("[WARNING] invalid option detected, the string will be decrypted");
+            eflag = 0;
+          }
         //allocating memory for the string
         char* message = strdup(argv[2]); //message is now the string we're going to operate on
         k = atoi(argv[3]);
@@ -110,4 +118,13 @@ void encrypt(char *string, int key)
     puts("output :");
     puts(string);
     return;
+  }
+
+void usage()
+  {
+    puts("usage: ccypher [options] string_to_decrypt key");
+    puts("\toptions:");
+    puts("\t  -e, \tencrypt the given string");
+    puts("\t  -d, \tdecrypt the given string");
+    puts("\t  must supply one or the other");
   }
