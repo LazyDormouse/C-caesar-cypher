@@ -7,13 +7,14 @@ Usage:
 
     ccypher [options] string_to_decrypt key
       options:
-          -e          Encrypts the given string instead of decrypting it
+          -e,   encrypt the given string
+          -d,   decrypt the given string
 'key' is the number of letters that needs to be shifted
 
 
 Example: 
 
-    ccypher.exe "rovvy gybvn" 10
+    ccypher.exe -d "rovvy gybvn" 10
 Output is:
 
     hello world
