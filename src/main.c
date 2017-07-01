@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
         //Allocating memory for the string we need to decrypt
         char* message = strdup(argv[1]); //message is now the string we're going to operate on
         k = atoi(argv[2]);
-        //since I'm too lazy to deal with mixed case letter, we're converting
+        //since I'm too lazy to deal with mixed case letters, we're converting
         //the whole message to lowercase
         for(i = 0; message[i]; i++)
             message[i] = tolower(message[i]);
