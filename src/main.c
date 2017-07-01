@@ -1,9 +1,9 @@
 /*
  *Implementation of Caesar's cipher
  *A command line tool that accepts the following parameters:
- *1) String to decrypt
+ *1) String to decrypt/encrypt
  *2) The key, meant as an integer indicating the shift factor
- *Prints on stdout the decrypted string
+ *Prints on stdout the decrypted/encrypted string
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -11,23 +11,31 @@
 #include <ctype.h>
 
 void decrypt(char *string, int key);
+void encrypt(char *string, int key);
 
 int main(int argc, char *argv[])
   {
-    int k, i;
-    if (argc != 3)
+    int k, i, eflag = 0;
+    if (argc != 4)
       printf("usage:\n %s string_to_decrypt key ", argv[0]);
     else
       {
-        //Allocating memory for the string we need to decrypt
-        char* message = strdup(argv[1]); //message is now the string we're going to operate on
-        k = atoi(argv[2]);
+        //checking if we're encrypting the message or not, assume not
+        if(strcmp("-e", argv[1]) == 0)
+          eflag = 1;
+        //allocating memory for the string
+        char* message = strdup(argv[2]); //message is now the string we're going to operate on
+        k = atoi(argv[3]);
         //since I'm too lazy to deal with mixed case letters, we're converting
         //the whole message to lowercase
         for(i = 0; message[i]; i++)
             message[i] = tolower(message[i]);
-        decrypt(message, k);
-        //done decrypting the message, let's free memory up
+        //if eflag is 1 encrypt the message, else decrypt it
+        if(eflag == 1)
+          encrypt(message, k);
+        else
+          decrypt(message, k);
+        //done dealing with the message, let's free memory up
         free(message);
       }
     return 0;
@@ -40,12 +48,12 @@ void decrypt(char *string, int key)
     string_lenght = strlen(string);
     for(i = 0; i < string_lenght; i++)
       {
-        //Checking if the char we're decrypting is a space
+        //checking if the char we're decrypting is a space
         //if it is, leave it
         if(!isspace(string[i]))
           {
             /*
-             *Explaination on how the next line of code works:
+             *explaination on how the next line of code works:
              *lmao i dunno it's black magic
              *jokes aside, strchr finds which position on the alphabet the
              *letter to be decrypted is located at. Then it substracts
@@ -63,6 +71,37 @@ void decrypt(char *string, int key)
                 a--;
               }
             //a = (((int)(strchr(alphabet, string[i]) - alphabet)) - key) % 26;
+            string[i] = alphabet[a];
+          }
+        else
+          string[i] = ' ';
+      }
+    puts("output :");
+    puts(string);
+    return;
+  }
+
+/*
+ *encrypt function is basically the same as decrypt, but
+ *we're adding the key instead of subtracting it.
+ *if you have any doubts, look at the decrypt function
+ */
+void encrypt(char *string, int key)
+  {
+    int i, j, a, string_lenght;
+    char alphabet[] = "abcdefghijklmnopqrstuvwxyz";
+    string_lenght = strlen(string);
+    for(i = 0; i < string_lenght; i++)
+      {
+        if(!isspace(string[i]))
+          {
+            a = (int)(strchr(alphabet, string[i]) - alphabet);
+            for(j = 0; j < key; j++)
+              {
+                if(a > 25)
+                  a = 0;
+                a++;
+              }
             string[i] = alphabet[a];
           }
         else
