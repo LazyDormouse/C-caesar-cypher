@@ -17,3 +17,5 @@ Example:
 Output is:
 
     hello world
+
+Compiled exe for Windows/Mac/Linux available [here](http://www.mediafire.com/file/6o5y0celltf27g5/ccypher.exe)
