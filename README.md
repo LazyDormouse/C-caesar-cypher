@@ -1,7 +1,5 @@
-# C-caesar-cypher
-Implementation of the famous Caesar's cypher as a CLI tool 
-
-Both encrypting and decrypting are supported.
+# C-Caesar-cypher
+Implementation of the Caesar's cypher as a CLI tool 
 
 Usage: 
 
@@ -19,4 +17,5 @@ Output is:
 
     hello world
 
-Compiled exe for Windows/Mac/Linux available [here](http://www.mediafire.com/file/6o5y0celltf27g5/ccypher.exe)
+Installation:
+  clone repo, cd into it and run make
